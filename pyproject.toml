@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aan-study"
+version = "0.1.0"
+description = "Educational study of the Animate Anyone core diffusion/animation model (ReferenceNet, Pose Guider, Denoising UNet, VAE, CLIP, attention)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Team Member 3 — Animate Anyone study" }]
+dependencies = [
+    "torch>=2.1",
+    "torchvision>=0.16",
+    "numpy>=1.26",
+    "diffusers>=0.24",
+    "transformers>=4.36",
+    "safetensors>=0.4",
+    "einops>=0.7",
+    "pillow>=10",
+    "opencv-python-headless>=4.9",
+    "imageio>=2.34",
+    "imageio-ffmpeg>=0.4.9",
+    "PyYAML>=6.0",
+    "psutil>=5.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.5"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

@@ -1,0 +1,110 @@
+# ============================================================================
+# Ablation matrix — consumed by scripts/run_ablations.py
+#
+# Each entry:
+#   id            unique experiment id (used in file names)
+#   description   what is changed and why (feeds the report)
+#   overrides     config keys set by dotted path (see aan.config.set_by_path)
+#   options       harness-level knobs (not part of PrototypeConfig):
+#                   motion_speed     multiply pose animation speed (1.0 = normal)
+#                   pose_blur        gaussian blur sigma applied to pose maps
+#                   pose_occlude     fraction of the frame height blanked out
+#                   pose_jitter      max pixel shift of the whole pose map
+#                   frames           override input.frames
+#                   resolution       override input.ref_height/ref_width
+#                   steps            override diffusion.num_inference_steps
+#   note          honest interpretation guidance shown in the CSV
+# ============================================================================
+
+base_config: configs/prototype_cpu_small.yaml
+
+experiments:
+  - id: E00_baseline
+    description: "All components enabled (reference + CLIP + pose + temporal, CFG 3.5, 8 steps)."
+    overrides: {}
+
+  # ---- 1. remove ReferenceNet ---------------------------------------------
+  - id: E01_no_reference
+    description: "ReferenceNet disabled -> spatial attention falls back to plain self-attention."
+    overrides: {"runtime.use_reference": false}
+
+  # ---- 2. remove CLIP -------------------------------------------------------
+  - id: E02_no_clip
+    description: "CLIP conditioning disabled -> cross-attention skipped in all blocks."
+    overrides: {"runtime.use_clip": false}
+
+  # ---- 3. remove pose guider -------------------------------------------------
+  - id: E03_no_pose
+    description: "Pose guider disabled -> no motion conditioning at all."
+    overrides: {"runtime.use_pose": false}
+
+  # ---- 4. remove temporal attention -------------------------------------------
+  - id: E04_no_temporal
+    description: "Temporal (motion) modules disabled -> no cross-frame attention."
+    overrides: {"runtime.use_temporal": false}
+
+  # ---- 5. weaker reference conditioning ----------------------------------------
+  - id: E05_weak_reference_0p5
+    description: "Reference attention strength 0.5 (blend with plain self-attention)."
+    overrides: {"runtime.reference_attention_strength": 0.5}
+  - id: E05b_zero_reference_0p0
+    description: "Reference attention strength 0.0 (equivalent to disabling the bank, keeps module shapes)."
+    overrides: {"runtime.reference_attention_strength": 0.0}
+
+  # ---- 6. diffusion steps --------------------------------------------------------
+  - id: E06_steps_2
+    description: "Only 2 DDIM steps (speed vs quality)."
+    overrides: {"diffusion.num_inference_steps": 2}
+  - id: E06b_steps_16
+    description: "16 DDIM steps (quality vs speed)."
+    overrides: {"diffusion.num_inference_steps": 16}
+
+  # ---- 7. guidance scale ------------------------------------------------------------
+  - id: E07_guidance_1p0
+    description: "Guidance 1.0 -> classifier-free guidance disabled (single forward pass)."
+    overrides: {"diffusion.guidance_scale": 1.0}
+  - id: E07b_guidance_7p5
+    description: "Guidance 7.5 -> stronger conditioning signal (over-saturation risk)."
+    overrides: {"diffusion.guidance_scale": 7.5}
+
+  # ---- 8. pose quality -----------------------------------------------------------------
+  - id: E08_pose_degraded
+    description: "Blurred + jittered + partially occluded pose maps (noisy detector output)."
+    overrides: {}
+    options: {pose_blur: 3.0, pose_jitter: 4, pose_occlude: 0.25}
+
+  # ---- 9. frame count --------------------------------------------------------------------
+  - id: E09_frames_4
+    description: "Short clip: 4 frames."
+    overrides: {}
+    options: {frames: 4}
+  - id: E09b_frames_16
+    description: "Longer clip: 16 frames."
+    overrides: {}
+    options: {frames: 16}
+
+  # ---- 10. resolution ----------------------------------------------------------------------
+  - id: E10_res_64
+    description: "Lower resolution: 64x64."
+    overrides: {}
+    options: {resolution: 64}
+  - id: E10b_res_128
+    description: "Higher resolution: 128x128."
+    overrides: {}
+    options: {resolution: 128}
+
+  # ---- 11. VAE precision ---------------------------------------------------------------------
+  - id: E11_vae_fp16
+    description: "VAE runs in float16 on CPU (precision/quality check)."
+    overrides: {"vae.dtype": "float16"}
+
+  # ---- 12. long vs short motion ----------------------------------------------------------------
+  - id: E12_slow_motion
+    description: "Same 8 frames but half-speed motion (slow sequence)."
+    overrides: {}
+    options: {motion_speed: 0.5}
+
+  # ---- bonus: fusion strategy -------------------------------------------------------------------
+  - id: E13_pose_fusion_concat
+    description: "Pose fused by channel concatenation instead of addition (SD-image-variation style)."
+    overrides: {"runtime.pose_fusion": "concat", "unet.in_channels": 8}

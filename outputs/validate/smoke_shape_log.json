@@ -1,0 +1,741 @@
+{
+  "records": [
+    {
+      "name": "params::vae.vae",
+      "shape": [
+        316695
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 316695,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::clip.model",
+      "shape": [
+        44032
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 44032,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.conv_in",
+      "shape": [
+        1184
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 1184,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.block0",
+      "shape": [
+        22816
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 22816,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.down0",
+      "shape": [
+        18496
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 18496,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.block1",
+      "shape": [
+        90688
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 90688,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.down1",
+      "shape": [
+        36928
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 36928,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.mid_res",
+      "shape": [
+        74112
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 74112,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.mid_block",
+      "shape": [
+        90688
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 90688,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.up0",
+      "shape": [
+        36928
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 36928,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.reduce0",
+      "shape": [
+        119360
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 119360,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.block_up0",
+      "shape": [
+        90688
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 90688,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.up1",
+      "shape": [
+        36928
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 36928,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.reduce1",
+      "shape": [
+        40288
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 40288,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::reference_net.block_up1",
+      "shape": [
+        22816
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 22816,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::pose_guider.conv_in",
+      "shape": [
+        448
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 448,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::pose_guider.blocks",
+      "shape": [
+        145488
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 145488,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::pose_guider.conv_out",
+      "shape": [
+        36896
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 36896,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.conv_in",
+      "shape": [
+        1184
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 1184,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.time_embed",
+      "shape": [
+        20736
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 20736,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.down0_res",
+      "shape": [
+        22752
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 22752,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.down0_attn",
+      "shape": [
+        14624
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 14624,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.down0_down",
+      "shape": [
+        18496
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 18496,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.down1_res",
+      "shape": [
+        82368
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 82368,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.down1_attn",
+      "shape": [
+        49728
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 49728,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.down1_down",
+      "shape": [
+        36928
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 36928,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.mid_res1",
+      "shape": [
+        82368
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 82368,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.mid_attn",
+      "shape": [
+        33152
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 33152,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.mid_res2",
+      "shape": [
+        82368
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 82368,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.up0_up",
+      "shape": [
+        36928
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 36928,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.up0_res",
+      "shape": [
+        127616
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 127616,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.up0_attn",
+      "shape": [
+        49728
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 49728,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.up1_up",
+      "shape": [
+        36928
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 36928,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.up1_res",
+      "shape": [
+        44416
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 44416,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.up1_attn",
+      "shape": [
+        14624
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 14624,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.norm_out",
+      "shape": [
+        64
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 64,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "params::unet.conv_out",
+      "shape": [
+        1156
+      ],
+      "dtype": "params",
+      "device": "-",
+      "requires_grad": false,
+      "min": null,
+      "max": null,
+      "numel": 1156,
+      "note": "total parameters (trainable flag aggregated over children)"
+    },
+    {
+      "name": "reference_image",
+      "shape": [
+        1,
+        3,
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -0.8196078538894653,
+      "max": 1.0,
+      "numel": 12288,
+      "note": "[B,3,H,W] in [-1,1]"
+    },
+    {
+      "name": "reference_latent",
+      "shape": [
+        1,
+        4,
+        8,
+        8
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -0.06511005014181137,
+      "max": 0.18931058049201965,
+      "numel": 256,
+      "note": "[B,4,h,w] = VAE(ref)*0.18215"
+    },
+    {
+      "name": "clip_image_embedding",
+      "shape": [
+        1,
+        64
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -2.4662601947784424,
+      "max": 2.5099732875823975,
+      "numel": 64,
+      "note": "[B,D] projected CLIP image embedding"
+    },
+    {
+      "name": "clip_context",
+      "shape": [
+        1,
+        1,
+        64
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -2.4662601947784424,
+      "max": 2.5099732875823975,
+      "numel": 64,
+      "note": "[B,1,D] cross-attention K/V"
+    },
+    {
+      "name": "reference_bank_0",
+      "shape": [
+        1,
+        64,
+        32
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -2.640052556991577,
+      "max": 2.821326494216919,
+      "numel": 2048,
+      "note": "bank tensor #0 [B,N_i,C_i] from ReferenceNet"
+    },
+    {
+      "name": "reference_bank_1",
+      "shape": [
+        1,
+        16,
+        64
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -3.241860866546631,
+      "max": 2.832543134689331,
+      "numel": 1024,
+      "note": "bank tensor #1 [B,N_i,C_i] from ReferenceNet"
+    },
+    {
+      "name": "reference_bank_2",
+      "shape": [
+        1,
+        4,
+        64
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -2.672865390777588,
+      "max": 2.53806734085083,
+      "numel": 256,
+      "note": "bank tensor #2 [B,N_i,C_i] from ReferenceNet"
+    },
+    {
+      "name": "reference_bank_3",
+      "shape": [
+        1,
+        16,
+        64
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -3.306853771209717,
+      "max": 2.741213798522949,
+      "numel": 1024,
+      "note": "bank tensor #3 [B,N_i,C_i] from ReferenceNet"
+    },
+    {
+      "name": "reference_bank_4",
+      "shape": [
+        1,
+        64,
+        32
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -3.203457832336426,
+      "max": 2.9392123222351074,
+      "numel": 2048,
+      "note": "bank tensor #4 [B,N_i,C_i] from ReferenceNet"
+    },
+    {
+      "name": "pose_maps",
+      "shape": [
+        1,
+        3,
+        4,
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": 0.0,
+      "max": 1.0,
+      "numel": 49152,
+      "note": "[1,3,F,H,W] in [0,1], no normalization"
+    },
+    {
+      "name": "pose_features",
+      "shape": [
+        1,
+        32,
+        4,
+        8,
+        8
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -0.04140762612223625,
+      "max": 0.03288589417934418,
+      "numel": 8192,
+      "note": "[1,C_inner,F,h,w] added after conv_in"
+    },
+    {
+      "name": "noisy_video_latents",
+      "shape": [
+        1,
+        4,
+        4,
+        8,
+        8
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -3.405808448791504,
+      "max": 3.029174327850342,
+      "numel": 1024,
+      "note": "[B,4,F,h,w] initial pure noise x_T"
+    },
+    {
+      "name": "unet_input_first_step",
+      "shape": [
+        2,
+        4,
+        4,
+        8,
+        8
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -3.405808448791504,
+      "max": 3.029174327850342,
+      "numel": 2048,
+      "note": "[B,4,F,h,w] (CFG batch doubled)"
+    },
+    {
+      "name": "predicted_noise_first_step",
+      "shape": [
+        1,
+        4,
+        4,
+        8,
+        8
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -1.9006621837615967,
+      "max": 1.5251038074493408,
+      "numel": 1024,
+      "note": "[B,4,F,h,w]"
+    },
+    {
+      "name": "denoised_video_latents",
+      "shape": [
+        1,
+        4,
+        4,
+        8,
+        8
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -9.478458404541016,
+      "max": 10.42931842803955,
+      "numel": 1024,
+      "note": "[B,4,F,h,w] final x_0 latent"
+    },
+    {
+      "name": "decoded_video",
+      "shape": [
+        1,
+        3,
+        4,
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "requires_grad": false,
+      "min": -3.616452932357788,
+      "max": 1.8843687772750854,
+      "numel": 49152,
+      "note": "[B,3,F,H,W] RGB in [-1,1]"
+    }
+  ],
+  "count": 53
+}

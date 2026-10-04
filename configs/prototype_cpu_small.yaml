@@ -1,0 +1,99 @@
+# ============================================================================
+# Educational prototype — tiny configuration (CPU, no downloads)
+#
+# Mirrors the production interface with small numbers so the whole
+# image-to-video graph runs in seconds on a laptop CPU:
+#   latent grid  = 96/8 = 12 x 12, frames = 8, DDIM steps = 8
+#
+# Beta schedule / steps_offset / scaling factor are kept identical to the
+# production inference configs (inference_v1/v2.yaml of the reference repo).
+# ============================================================================
+
+input:
+  ref_height: 96        # pixel height (divisible by 8!)
+  ref_width: 96         # pixel width  (divisible by 8!)
+  frames: 8             # F: clip length (production v2 trains with 24)
+
+vae:
+  mode: tiny            # tiny | pretrained
+  pretrained_id: null   # e.g. stabilityai/sd-vae-ft-mse (not downloaded)
+  block_out_channels: [16, 32, 32, 32]   # 4 levels -> down factor 8
+  latent_channels: 4
+  layers_per_block: 1
+  norm_num_groups: 8
+  sample_size: 96
+  scaling_factor: 0.18215   # SD convention, used on encode *and* decode
+  decode_framewise: true    # same memory-saving loop as the reference pipeline
+  dtype: null               # null -> runtime dtype (E11 sets float16)
+
+clip:
+  mode: tiny            # tiny | pretrained
+  pretrained_id: null   # e.g. openai/clip-vit-base-patch32 / ViT-H-14 encoder
+  # tiny CLIP vision config -> projection_dim must equal unet.context_dim
+  hidden_size: 32
+  intermediate_size: 64
+  num_hidden_layers: 2
+  num_attention_heads: 2
+  image_size: 32
+  patch_size: 16
+  projection_dim: 64
+  use_null_embedding: true   # CFG uncond context = zeros_like(embeds)
+
+unet:
+  in_channels: 4        # latent channels for pose_fusion=add
+  base_channels: [32, 64, 64]   # ch per level (production: 320/640/1280/1280)
+  heads: 4
+  context_dim: 64       # must equal clip.projection_dim
+  time_embed_dim: 128
+  # SD zeroes the output conv (true in production). With *random* weights that makes the
+  # denoiser output exactly 0 and the whole sampler inert, so the educational config
+  # disables it. Flip to true to reproduce the production initialisation.
+  zero_init_out: false
+
+pose_guider:
+  # 4 levels -> three stride-2 stages -> H/8 == latent resolution (production:
+  # (16, 32, 96, 256) with a zero-initialised conv_out to 320 channels)
+  block_out_channels: [16, 32, 64, 128]
+  out_channels: null    # null -> resolved: 32 (add) / 4 (concat)
+  # Production uses true (the branch starts as a no-op on a pretrained UNet). Disabled here so
+  # the pose ablations (E03/E08) are observable with random weights.
+  zero_init_out: false
+
+reference_net:
+  base_channels: [32, 64, 64]   # MUST equal unet.base_channels
+  heads: 4
+  store_all_blocks: true        # production v2: fusion_blocks="full"
+
+motion:
+  enabled: true
+  levels: [0, 1]        # encoder depth indices -> all 4 spatial scales? see docs
+  mid_block: false      # production v1 false, v2 true
+  heads: 4
+  max_frames: 32        # production v1 encoded 24, v2 encodes 32
+  zero_init_out: true   # AnimateDiff zero_module(proj_out)
+
+diffusion:
+  num_train_timesteps: 1000
+  beta_start: 0.00085
+  beta_end: 0.012
+  beta_schedule: linear
+  steps_offset: 1
+  prediction_type: epsilon   # production v2 uses v_prediction + zero-SNR
+  num_inference_steps: 8
+  guidance_scale: 3.5        # production default (scripts/pose2vid.py --cfg 3.5)
+  use_cfg: true
+  eta: 0.0
+
+runtime:
+  device: auto          # auto | cpu | cuda
+  dtype: float32        # float32 | float16 (CPU fp16 is slow; see E11)
+  seed: 1234
+  use_reference: true
+  use_clip: true
+  use_pose: true
+  use_temporal: true
+  pose_fusion: add      # add (production) | concat (SD-image-variation style)
+  reference_attention_strength: 1.0
+  log_shapes: true
+
+output_dir: outputs/run_small

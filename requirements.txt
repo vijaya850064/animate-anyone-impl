@@ -1,0 +1,38 @@
+# ============================================================================
+# Animate Anyone Study — Team Member 3 (Core Diffusion & Animation Model)
+# Environment used for validation (see docs/00_setup_guide.md):
+#   Python 3.13.3, Windows 11, CPU-only torch build.
+#
+# Pinned to what was actually installed and validated in this workspace.
+# The preview package versions are newer than the original 2023/2024
+# Animate Anyone releases, but every API used by this repository is stable
+# across these ranges.
+# ============================================================================
+
+# --- Deep learning core -----------------------------------------------------
+torch>=2.1                # tested with 2.14.1+cpu
+torchvision>=0.16         # tested with 0.29.1+cpu
+numpy>=1.26               # tested with 2.5.0
+
+# --- Diffusion / transformers ----------------------------------------------
+diffusers>=0.24           # tested with 0.24.0 (AutoencoderKL, DDIMScheduler)
+transformers>=4.36        # tested with 4.46.3 (CLIPVisionModelWithProjection)
+safetensors>=0.4
+accelerate>=0.25          # optional, for device/dtype helpers (tested 1.15.0)
+einops>=0.7               # used for all tensor reshapes (tested 0.8.2)
+
+# --- Image / video I/O -------------------------------------------------------
+pillow>=10                # tested with 12.2.0
+opencv-python-headless>=4.9   # tested with 4.13.0.92
+imageio>=2.34             # tested with 2.38.0
+imageio-ffmpeg>=0.4.9     # tested with 0.6.0 (mp4 export, ships ffmpeg)
+
+# --- Utilities ---------------------------------------------------------------
+PyYAML>=6.0               # config files (tested 6.0.3)
+psutil>=5.9               # peak-RSS measurement in the ablation harness
+matplotlib>=3.8           # optional: contact sheets / plots (tested 3.11.1)
+
+# NOTE: no private datasets, no user media, no third-party checkpoints are
+# required by default. The educational prototype builds tiny randomly
+# initialised modules from diffusers/transformers configs so that it runs on
+# CPU without any downloads. See configs/prototype_cpu_small.yaml.

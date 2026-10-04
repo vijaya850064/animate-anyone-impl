@@ -1,0 +1,81 @@
+# ============================================================================
+# Educational prototype — minimal smoke-test configuration
+# 64x64 pixels (latent 8x8), 4 frames, 4 DDIM steps. Runs in ~1-2 s on CPU.
+# Used by scripts/validate_build.py and for quick iteration.
+# ============================================================================
+
+input:
+  ref_height: 64
+  ref_width: 64
+  frames: 4
+
+vae:
+  mode: tiny
+  block_out_channels: [16, 32, 32, 32]
+  latent_channels: 4
+  layers_per_block: 1
+  norm_num_groups: 8
+  sample_size: 64
+  scaling_factor: 0.18215
+
+clip:
+  mode: tiny
+  hidden_size: 32
+  intermediate_size: 64
+  num_hidden_layers: 2
+  num_attention_heads: 2
+  image_size: 32
+  patch_size: 16
+  projection_dim: 64
+
+unet:
+  in_channels: 4
+  base_channels: [32, 64, 64]
+  heads: 4
+  context_dim: 64
+  time_embed_dim: 128
+  zero_init_out: false   # see prototype_cpu_small.yaml for the rationale
+
+pose_guider:
+  block_out_channels: [16, 32, 64, 128]
+  out_channels: null
+  zero_init_out: false
+
+reference_net:
+  base_channels: [32, 64, 64]
+  heads: 4
+  store_all_blocks: true
+
+motion:
+  enabled: true
+  levels: [0, 1]
+  mid_block: false
+  heads: 4
+  max_frames: 32
+  zero_init_out: true
+
+diffusion:
+  num_train_timesteps: 1000
+  beta_start: 0.00085
+  beta_end: 0.012
+  beta_schedule: linear
+  steps_offset: 1
+  prediction_type: epsilon
+  num_inference_steps: 4
+  guidance_scale: 3.5
+  use_cfg: true
+  eta: 0.0
+
+runtime:
+  device: auto
+  dtype: float32
+  seed: 1234
+  use_reference: true
+  use_clip: true
+  use_pose: true
+  use_temporal: true
+  pose_fusion: add
+  reference_attention_strength: 1.0
+  log_shapes: true
+
+output_dir: outputs/run_quick

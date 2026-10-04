@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Outputs produced by the prototype / ablation harness
+outputs/**/*.mp4
+outputs/**/*.gif
+outputs/**/shape_log.json
+outputs/**/run_log.json
+outputs/**/metrics.json
+outputs/ablations/*.csv
+
+# Inputs are synthesised by scripts/make_demo_inputs.py — do NOT commit
+# personal user media into this folder (ethics requirement, see README).
+inputs/**
+
+# Model weights (never committed; see docs/00_setup_guide.md for licenses)
+*.ckpt
+*.pth
+*.safetensors
+pretrained_weights/
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
